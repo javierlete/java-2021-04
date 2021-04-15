@@ -1,5 +1,9 @@
 package com.ipartek.formacion;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
 // import java.lang.*;
 
 /**
@@ -267,7 +271,7 @@ public class SintaxisBasica {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void mainArrays(String[] args) {
 		int tamano = 3;
 		int[] arr = new int[tamano];
 
@@ -319,5 +323,63 @@ public class SintaxisBasica {
 		System.out.println(textos[1]);
 		System.out.println(traducciones[1][0]);
 
+	}
+	
+	/**
+	 * Colecciones
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Java5 <String> Java8 <>
+		ArrayList<String> nombres = new ArrayList<>();
+		
+		System.out.println(nombres.size());
+		
+		nombres.add("Javier");
+		nombres.add("Pedro");
+		nombres.add("José");
+		nombres.add("Javier");
+		
+		System.out.println(nombres.size());
+		
+		nombres.remove(1);
+		
+		for(String nombre: nombres) {
+			System.out.println(nombre);
+		}
+		
+		HashMap<String, Integer> numeros = new HashMap<>();
+		
+		numeros.put("Uno", 1);
+		numeros.put("Dos", 2);
+		
+		System.out.println(numeros.get("Uno"));
+		
+		for(String clave: numeros.keySet()) {
+			System.out.println(String.format("Clave %s = valor %s", clave, numeros.get(clave)));
+		}
+		
+		for(int valor: numeros.values()) {
+			System.out.println(valor);
+		}
+		
+		HashMap<String, String> diccionario = new HashMap<>();
+		
+		diccionario.put("casa", "home");
+		diccionario.put("perro", "dog");
+		
+		System.out.println(diccionario.get("casa"));
+		
+		HashSet<String> conjunto = new HashSet<>();
+		
+		conjunto.add("prueba");
+		conjunto.add("prueba2");
+		conjunto.add("prueba");
+		
+		System.out.println(conjunto.size());
+		
+		for(String dato: conjunto) {
+			System.out.println(dato);
+		}
 	}
 }
