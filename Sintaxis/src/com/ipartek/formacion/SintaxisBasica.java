@@ -1,5 +1,7 @@
 package com.ipartek.formacion;
 
+// import java.lang.*;
+
 /**
  * Clase para demostración de sintaxis básica de Java
  * 
@@ -126,7 +128,7 @@ public class SintaxisBasica {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void mainSentenciasDeControl(String[] args) {
 		final int LIMITE_PELIGRO = 100;
 		final int LIMITE_AVISO = 75;
 
@@ -207,5 +209,52 @@ public class SintaxisBasica {
 			System.out.println(c);
 			c++;
 		}
+	}
+
+	/**
+	 * Tipo String
+	 */
+	public static void main(String[] args) {
+		String nombre = "Javier";
+		
+		System.out.println("Hola " + nombre);
+		
+		String nombre2 = new String("Pepe");
+		
+		System.out.println(nombre == nombre2); // Comparación de punteros (si son el mismo)
+		
+		System.out.println(nombre.equals(nombre2)); // Los valores son iguales ("gemelos")
+		
+		System.out.println(nombre.toUpperCase());
+		
+		System.out.println(nombre.length());
+		
+		System.out.println("Javier".equals(nombre));
+		
+		System.out.println(nombre.compareTo(nombre2) < 0); // nombre < nombre2
+		
+		System.out.println("       ñlkajsñlkhadsg ñlkj ñlkhsd g           ".trim());
+		
+		nombre = "Pepe";
+		
+		int x = 5;
+		
+		String s = String.valueOf(x);
+		
+		System.out.println(s + 55);
+		
+		s = "" + x; // Equivalente a lo de abajo
+		
+		// s = new StringBuilder("").append(x).toString();
+		
+		System.out.println(nombre.charAt(1));
+		
+		for(int i = 0; i < nombre.length(); i++) {
+			System.out.println(nombre.charAt(i));
+		}
+		
+		System.out.println(nombre.contains("pe"));
+		
+		System.out.println(nombre.substring(1,3));
 	}
 }
