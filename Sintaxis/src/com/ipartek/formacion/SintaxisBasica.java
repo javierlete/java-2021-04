@@ -1,6 +1,10 @@
 package com.ipartek.formacion;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -385,7 +389,7 @@ public class SintaxisBasica {
 	}
 
 	@SuppressWarnings("unused")
-	public static void main(String[] args) {
+	public static void mainTiposEncapsulados(String[] args) {
 		/*
 		 * long -> Long; int -> Integer; short -> Short; byte -> Byte; float -> Float; double
 		 * -> Double; char -> Character; boolean -> Boolean
@@ -401,5 +405,26 @@ public class SintaxisBasica {
 		int j2 = jj;
 		
 		Integer z = null;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) {
+		// Java 1.0
+		Date d = new Date();
+		
+		System.out.println(d);
+		System.out.println(String.format("%s/%s/%s", d.getYear() + 1900, d.getMonth() + 1, d.getDate()));
+		
+		// Java 1.1
+		GregorianCalendar gc = new GregorianCalendar();
+		
+		System.out.println(gc);
+		System.out.println(String.format("%s/%s/%s", gc.get(Calendar.YEAR), gc.get(Calendar.MONTH) + 1, gc.get(Calendar.DATE)));
+		
+		// Java8 y si no, JodaTime
+		LocalDate ld = LocalDate.now();
+		
+		System.out.println(ld);
+		System.out.println(String.format("%s/%s/%s", ld.getYear(), ld.getMonthValue(), ld.getDayOfMonth()));
 	}
 }
