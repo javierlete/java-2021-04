@@ -214,47 +214,110 @@ public class SintaxisBasica {
 	/**
 	 * Tipo String
 	 */
-	public static void main(String[] args) {
+	public static void mainString(String[] args) {
 		String nombre = "Javier";
-		
+
 		System.out.println("Hola " + nombre);
-		
+
 		String nombre2 = new String("Pepe");
-		
+
 		System.out.println(nombre == nombre2); // Comparación de punteros (si son el mismo)
-		
+
 		System.out.println(nombre.equals(nombre2)); // Los valores son iguales ("gemelos")
-		
+
 		System.out.println(nombre.toUpperCase());
-		
+
 		System.out.println(nombre.length());
-		
+
 		System.out.println("Javier".equals(nombre));
-		
+
 		System.out.println(nombre.compareTo(nombre2) < 0); // nombre < nombre2
-		
+
 		System.out.println("       ñlkajsñlkhadsg ñlkj ñlkhsd g           ".trim());
-		
+
 		nombre = "Pepe";
-		
+
 		int x = 5;
-		
+
 		String s = String.valueOf(x);
-		
+
 		System.out.println(s + 55);
-		
+
 		s = "" + x; // Equivalente a lo de abajo
-		
+
 		// s = new StringBuilder("").append(x).toString();
-		
+
 		System.out.println(nombre.charAt(1));
-		
-		for(int i = 0; i < nombre.length(); i++) {
+
+		for (int i = 0; i < nombre.length(); i++) {
 			System.out.println(nombre.charAt(i));
 		}
-		
+
 		System.out.println(nombre.contains("pe"));
+
+		System.out.println(nombre.substring(1, 3));
+
+		System.out.println(nombre.replace("pe", "pillo"));
+
+		System.out.println(nombre);
+	}
+
+	/**
+	 * Ejemplos de Arrays
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int tamano = 3;
+		int[] arr = new int[tamano];
+
+		arr[0] = 10;
+		arr[1] = 12;
+		// arr[5] = 15;
+
+		arr[0] = 20;
+
+		String linea;
+
+		for (int i = 0; i < arr.length; i++) {
+			System.out.println("arr[" + i + "] = " + arr[i]);
+
+			linea = String.format("arr[%s] = %s", i, arr[i]);
+			System.out.println(linea);
+
+			System.out.printf("arr[%s] = %s\n", i, arr[i]);
+		}
+
+		// Java5
+		for (int dato : arr) {
+			System.out.println(dato);
+		}
+
+		char[][] tablero = new char[8][8];
+
+		tablero[0][0] = 'T';
+		tablero[0][1] = 'C';
+
+		tablero[7][0] = 't';
+		tablero[7][7] = 't';
+
+		for (int fila = 0; fila < tablero.length; fila++) {
+			for (int columna = 0; columna < tablero[fila].length; columna++) {
+				if (tablero[fila][columna] != 0) {
+					System.out.print(tablero[fila][columna] + " ");
+				} else {
+					System.out.print(". ");
+				}
+			}
+			System.out.println();
+		}
+
+		String[] textos = { "asdf", "alksdjflasd" };
+
+		String[][] traducciones = { { "casa", "home" }, { "perro", "dog" } };
 		
-		System.out.println(nombre.substring(1,3));
+		System.out.println(textos[1]);
+		System.out.println(traducciones[1][0]);
+
 	}
 }
