@@ -1,5 +1,7 @@
 package com.ipartek.formacion.poo;
 
+import java.time.LocalDate;
+
 public class OficinaPrueba {
 
 	public static void main(String[] args) {
@@ -9,9 +11,10 @@ public class OficinaPrueba {
 		
 		o.meter(p);
 		//o.meter(null);
-		o.getPersonas().add(new Persona("IMPOSTOR")); // Ya no cuela
-		o.getPersonas().get(0).setNombre("CAMBIADO POR EL IMPOSTOR");
+		//o.getPersonas().add(new Persona("IMPOSTOR")); // Ya no cuela
+		//o.getPersonas().get(0).setNombre("CAMBIADO POR EL IMPOSTOR");
 		o.meter(new Persona("Javier"));
+		o.meter(new Persona("Recién nacido", LocalDate.now()));
 		
 		System.out.println(o.aTexto());
 		
