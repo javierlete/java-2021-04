@@ -9,11 +9,15 @@ public class Persona {
 	private static final String NOMBRE_POR_DEFECTO = "DESCONOCIDO";
 	private static final LocalDate FECHA_POR_DEFECTO = null;
 	
-	// Variables de instancia
+	// Variables de instancia (Fields)
 	private String nombre;
 	private LocalDate fechaNacimiento;
 
 	// Constructores
+	public Persona(Persona persona) {
+		this(persona.getNombre(), persona.getFechaNacimiento());
+	}
+	
 	public Persona(String nombre, LocalDate fechaNacimiento) {
 		setNombre(nombre);
 		setFechaNacimiento(fechaNacimiento);
@@ -45,6 +49,9 @@ public class Persona {
 
 	// Sobrecarga de método
 	public void setNombre(String nombre, String apellido) {
+		if(nombre == null || apellido == null) {
+			throw new RuntimeException("No se admite ni nombre ni apellido nulo");
+		}
 		setNombre(nombre + " " + apellido);
 	}
 
@@ -54,8 +61,11 @@ public class Persona {
 
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		if (fechaNacimiento != null) {
-			if (fechaNacimiento.isAfter(LocalDate.now()) || fechaNacimiento.isBefore(LocalDate.of(1900, 1, 1))) {
-				throw new RuntimeException("No se admiten fechas de nacimiento en el futuro o antes del 1900");
+			if (fechaNacimiento.isAfter(LocalDate.now())) {
+				throw new RuntimeException("No se admiten fechas de nacimiento en el futuro");
+			}
+			if(fechaNacimiento.isBefore(LocalDate.of(1900, 1, 1))) {
+				throw new RuntimeException("No se admiten fechas de nacimiento anteriores a 1900");
 			}
 		}
 		this.fechaNacimiento = fechaNacimiento;

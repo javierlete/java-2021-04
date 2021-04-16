@@ -21,6 +21,11 @@ public class PersonaPrueba {
 		System.out.println(persona.getNombre());
 		System.out.println(persona.getFechaNacimiento());
 		
+		//persona.setNombre(null, null);
+		//persona.setNombre("    ", "   ");
+		
+		System.out.println(persona.aTexto());
+		
 		Persona p = new Persona("Javier Lete", 1980, 3, 5);
 //		Persona p = new Persona("Pepe", LocalDate.of(1987, 2, 3));
 //		Persona p = new Persona("Juan");
@@ -30,6 +35,18 @@ public class PersonaPrueba {
 		System.out.println(p.getFechaNacimiento());
 		
 		System.out.println(p.aTexto());
+		
+		Persona p2 = new Persona(p);
+		
+		System.out.println(p2 == p);
+		
+		System.out.println(p.aTexto());
+		System.out.println(p2.aTexto());
+		
+		p2.setNombre("MODIFICADO");
+		
+		System.out.println(p.aTexto());
+		System.out.println(p2.aTexto());
 	}
 
 }
