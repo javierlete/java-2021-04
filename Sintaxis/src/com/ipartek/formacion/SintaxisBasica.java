@@ -134,7 +134,7 @@ public class SintaxisBasica {
 	/**
 	 * Sentencias de control
 	 * 
-	 * @param args
+	 * @param args argumentos
 	 */
 	public static void mainSentenciasDeControl(String[] args) {
 		final int LIMITE_PELIGRO = 100;
@@ -221,6 +221,8 @@ public class SintaxisBasica {
 
 	/**
 	 * Tipo String
+	 * 
+	 * @param args argumentos
 	 */
 	public static void mainString(String[] args) {
 		String nombre = "Javier";
@@ -273,7 +275,7 @@ public class SintaxisBasica {
 	/**
 	 * Ejemplos de Arrays
 	 * 
-	 * @param args
+	 * @param args argumentos
 	 */
 	public static void mainArrays(String[] args) {
 		int tamano = 3;
@@ -332,7 +334,7 @@ public class SintaxisBasica {
 	/**
 	 * Colecciones
 	 * 
-	 * @param args
+	 * @param args argumentos
 	 */
 	public static void mainColecciones(String[] args) {
 		// Java5 <String> Java8 <>

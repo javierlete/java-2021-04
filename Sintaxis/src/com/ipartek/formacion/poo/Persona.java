@@ -6,6 +6,8 @@ import java.util.GregorianCalendar;
 
 public class Persona {
 	// Constantes
+	private static final LocalDate FECHA_MAXIMA = LocalDate.now();
+	private static final LocalDate FECHA_MINIMA = LocalDate.of(1900, 1, 1);
 	private static final String NOMBRE_POR_DEFECTO = "DESCONOCIDO";
 	private static final LocalDate FECHA_POR_DEFECTO = null;
 	
@@ -61,10 +63,10 @@ public class Persona {
 
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		if (fechaNacimiento != null) {
-			if (fechaNacimiento.isAfter(LocalDate.now())) {
+			if (fechaNacimiento.isAfter(FECHA_MAXIMA)) {
 				throw new RuntimeException("No se admiten fechas de nacimiento en el futuro");
 			}
-			if(fechaNacimiento.isBefore(LocalDate.of(1900, 1, 1))) {
+			if(fechaNacimiento.isBefore(FECHA_MINIMA)) {
 				throw new RuntimeException("No se admiten fechas de nacimiento anteriores a 1900");
 			}
 		}
