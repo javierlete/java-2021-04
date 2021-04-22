@@ -16,7 +16,7 @@ public class PersonaPrueba {
 		persona.setFechaNacimiento(new GregorianCalendar(1985, 10, 17));
 		persona.setFechaNacimiento(1990, 3, 4);
 		
-		System.out.println(persona);
+		System.out.println("Esta es la persona: " + persona);
 		
 		System.out.println(persona.getNombre());
 		System.out.println(persona.getFechaNacimiento());

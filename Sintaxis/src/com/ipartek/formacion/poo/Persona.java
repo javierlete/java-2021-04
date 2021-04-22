@@ -89,4 +89,11 @@ public class Persona {
 	public String aTexto() {
 		return nombre + "; " + fechaNacimiento;
 	}
+
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + "]";
+	}
+	
+	
 }
