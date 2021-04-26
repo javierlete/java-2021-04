@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.GregorianCalendar;
 
-public class Persona {
+public class Persona { // extends Object {
 	// Constantes
-	private static final LocalDate FECHA_MAXIMA = LocalDate.now();
-	private static final LocalDate FECHA_MINIMA = LocalDate.of(1900, 1, 1);
-	private static final String NOMBRE_POR_DEFECTO = "DESCONOCIDO";
-	private static final LocalDate FECHA_POR_DEFECTO = null;
+	protected static final LocalDate FECHA_MAXIMA = LocalDate.now();
+	protected static final LocalDate FECHA_MINIMA = LocalDate.of(1900, 1, 1);
+	protected static final String NOMBRE_POR_DEFECTO = "DESCONOCIDO";
+	protected static final LocalDate FECHA_POR_DEFECTO = null;
 	
 	// Variables de instancia (Fields)
 	private String nombre;
@@ -21,6 +21,7 @@ public class Persona {
 	}
 	
 	public Persona(String nombre, LocalDate fechaNacimiento) {
+		// super();
 		setNombre(nombre);
 		setFechaNacimiento(fechaNacimiento);
 	}
