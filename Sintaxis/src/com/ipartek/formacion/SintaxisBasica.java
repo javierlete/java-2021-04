@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map.Entry;
 
 // import java.lang.*;
 
@@ -364,6 +365,10 @@ public class SintaxisBasica {
 
 		for (String clave : numeros.keySet()) {
 			System.out.println(String.format("Clave %s = valor %s", clave, numeros.get(clave)));
+		}
+		
+		for(Entry<String, Integer> entrada: numeros.entrySet()) {
+			System.out.println(String.format("Clave %s = valor %s", entrada.getKey(), entrada.getValue()));
 		}
 
 		for (int valor : numeros.values()) {
