@@ -18,6 +18,7 @@ public class EmpleadoPrueba {
 
 		o.meter(e);
 		o.meter(new Persona());
+		o.meter(new Empleado("Pepe", 1980, 2, 3, "87654321B"));
 
 		for (Persona p : o.getPersonas()) {
 			System.out.println(p);
