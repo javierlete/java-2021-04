@@ -1,0 +1,30 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-1791ceb608c-7e8bd5267a94cb40": {
+			"provider": "generic",
+			"driver": "sqlite_jdbc",
+			"name": "tienda.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\curso\\git\\java-2021-04\\BasesDeDatos\\tienda.db",
+				"url": "jdbc:sqlite:C:\\Users\\curso\\git\\java-2021-04\\BasesDeDatos\\tienda.db",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
