@@ -10,7 +10,7 @@ public class Persona { // extends Object {
 	protected static final LocalDate FECHA_MINIMA = LocalDate.of(1900, 1, 1);
 	protected static final String NOMBRE_POR_DEFECTO = "DESCONOCIDO";
 	protected static final LocalDate FECHA_POR_DEFECTO = null;
-	
+
 	// Variables de instancia (Fields)
 	private String nombre;
 	private LocalDate fechaNacimiento;
@@ -19,7 +19,7 @@ public class Persona { // extends Object {
 	public Persona(Persona persona) {
 		this(persona.getNombre(), persona.getFechaNacimiento());
 	}
-	
+
 	public Persona(String nombre, LocalDate fechaNacimiento) {
 		// super();
 		setNombre(nombre);
@@ -52,7 +52,7 @@ public class Persona { // extends Object {
 
 	// Sobrecarga de método
 	public void setNombre(String nombre, String apellido) {
-		if(nombre == null || apellido == null) {
+		if (nombre == null || apellido == null) {
 			throw new RuntimeException("No se admite ni nombre ni apellido nulo");
 		}
 		setNombre(nombre + " " + apellido);
@@ -63,15 +63,14 @@ public class Persona { // extends Object {
 	}
 
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
-		if (fechaNacimiento != null) {
-			if (fechaNacimiento.isAfter(FECHA_MAXIMA)) {
-				throw new RuntimeException("No se admiten fechas de nacimiento en el futuro");
-			}
-			if(fechaNacimiento.isBefore(FECHA_MINIMA)) {
-				throw new RuntimeException("No se admiten fechas de nacimiento anteriores a 1900");
-			}
+		if (fechaNacimiento != null && fechaNacimiento.isAfter(FECHA_MAXIMA)) {
+			throw new RuntimeException("No se admiten fechas de nacimiento en el futuro");
+		}
+		if (fechaNacimiento != null && fechaNacimiento.isBefore(FECHA_MINIMA)) {
+			throw new RuntimeException("No se admiten fechas de nacimiento anteriores a 1900");
 		}
 		this.fechaNacimiento = fechaNacimiento;
+
 	}
 
 	// Sobrecarga de método
@@ -84,9 +83,9 @@ public class Persona { // extends Object {
 	public void setFechaNacimiento(int anyo, int mes, int dia) {
 		setFechaNacimiento(LocalDate.of(anyo, mes, dia));
 	}
-	
+
 	// Métodos
-	
+
 	public String aTexto() {
 		return nombre + "; " + fechaNacimiento;
 	}
@@ -95,6 +94,5 @@ public class Persona { // extends Object {
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + "]";
 	}
-	
-	
+
 }
