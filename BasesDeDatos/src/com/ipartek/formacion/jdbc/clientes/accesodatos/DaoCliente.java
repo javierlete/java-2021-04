@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -22,8 +23,8 @@ public class DaoCliente {
 
 	public static ArrayList<Cliente> obtenerTodos() {
 		try (Connection con = obtenerConexion();
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(SQL_SELECT)) {
+				PreparedStatement ps = con.prepareStatement(SQL_SELECT);
+				ResultSet rs = ps.executeQuery()) {
 
 			ArrayList<Cliente> clientes = new ArrayList<>();
 
@@ -34,6 +35,46 @@ public class DaoCliente {
 			return clientes;
 		} catch (Exception e) {
 			throw new AccesoDatosException("No se han podido obtener todos los clientes", e);
+		}
+	}
+
+	public static ArrayList<Cliente> obtenerTodosAntesDeJava7() {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			con = obtenerConexion();
+			ps = con.prepareStatement(SQL_SELECT);
+			rs = ps.executeQuery();
+
+			ArrayList<Cliente> clientes = new ArrayList<>();
+
+			while (rs.next()) {
+				clientes.add(new Cliente(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellidos")));
+			}
+
+			return clientes;
+		} catch (Exception e) {
+			throw new AccesoDatosException("No se han podido obtener todos los clientes", e);
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {}
+			}
+			
+			if(ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {}
+			}
+			
+			if(con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {}
+			}
 		}
 	}
 
@@ -64,11 +105,11 @@ public class DaoCliente {
 			ps.executeUpdate();
 
 			ResultSet rs = ps.getGeneratedKeys();
-			
+
 			rs.next();
-			
+
 			cliente.setId(rs.getInt(1));
-			
+
 			return cliente;
 		} catch (Exception e) {
 			throw new AccesoDatosException("La operación de insertar cliente ha fallado", e);
