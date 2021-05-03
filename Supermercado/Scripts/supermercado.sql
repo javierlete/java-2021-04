@@ -8,8 +8,10 @@ CREATE TABLE usuarios (
 	apellidos VARCHAR(100)
 );
 
+DROP INDEX IF EXISTS usuarios_email_IDX;
 CREATE UNIQUE INDEX usuarios_email_IDX ON usuarios (email);
 
+DROP INDEX IF EXISTS usuarios_nombre_IDX;
 CREATE INDEX usuarios_nombre_IDX ON usuarios (nombre);
 
 INSERT INTO usuarios (email, password, nombre, apellidos) VALUES 
