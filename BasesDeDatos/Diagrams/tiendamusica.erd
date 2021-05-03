@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="tiendamusica">
+	<entities>
+		<data-source id="sqlite_jdbc-179220b1a3f-351d08bfdedc4786">
+			<entity id="1" name="Album" fq-name="Album"/>
+			<entity id="2" name="Artist" fq-name="Artist"/>
+			<entity id="3" name="Customer" fq-name="Customer"/>
+			<entity id="4" name="EmpView" fq-name="EmpView"/>
+			<entity id="5" name="Employee" fq-name="Employee"/>
+			<entity id="6" name="Genre" fq-name="Genre"/>
+			<entity id="7" name="Invoice" fq-name="Invoice"/>
+			<entity id="8" name="InvoiceLine" fq-name="InvoiceLine"/>
+			<entity id="9" name="MediaType" fq-name="MediaType"/>
+			<entity id="10" name="Playlist" fq-name="Playlist"/>
+			<entity id="11" name="PlaylistTrack" fq-name="PlaylistTrack"/>
+			<entity id="12" name="Track" fq-name="Track"/>
+			<entity id="13" name="foo" fq-name="foo"/>
+			<entity id="14" name="test" fq-name="test"/>
+		</data-source>
+	</entities>
+	<relations>
+		<relation name="FK_Track_Album" fq-name="Track.FK_Track_Album" type="fk" pk-ref="1" fk-ref="12"/>
+		<relation name="FK_Album_Artist" fq-name="Album.FK_Album_Artist" type="fk" pk-ref="2" fk-ref="1"/>
+		<relation name="FK_Invoice_Customer" fq-name="Invoice.FK_Invoice_Customer" type="fk" pk-ref="3" fk-ref="7"/>
+		<relation name="FK_Customer_Employee" fq-name="Customer.FK_Customer_Employee" type="fk" pk-ref="5" fk-ref="3"/>
+		<relation name="FK_Employee_Employee" fq-name="Employee.FK_Employee_Employee" type="fk" pk-ref="5" fk-ref="5"/>
+		<relation name="FK_Track_Genre_2" fq-name="Track.FK_Track_Genre_2" type="fk" pk-ref="6" fk-ref="12"/>
+		<relation name="FK_InvoiceLine_Invoice" fq-name="InvoiceLine.FK_InvoiceLine_Invoice" type="fk" pk-ref="7" fk-ref="8"/>
+		<relation name="FK_Track_MediaType_3" fq-name="Track.FK_Track_MediaType_3" type="fk" pk-ref="9" fk-ref="12"/>
+		<relation name="FK_PlaylistTrack_Playlist" fq-name="PlaylistTrack.FK_PlaylistTrack_Playlist" type="fk" pk-ref="10" fk-ref="11"/>
+		<relation name="FK_InvoiceLine_Track_2" fq-name="InvoiceLine.FK_InvoiceLine_Track_2" type="fk" pk-ref="12" fk-ref="8"/>
+		<relation name="FK_PlaylistTrack_Track_2" fq-name="PlaylistTrack.FK_PlaylistTrack_Track_2" type="fk" pk-ref="12" fk-ref="11"/>
+	</relations>
+</diagram>

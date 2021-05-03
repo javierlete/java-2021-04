@@ -11,19 +11,6 @@
 				"database": "C:\\Users\\curso\\git\\java-2021-04\\BasesDeDatos\\tienda.db",
 				"url": "jdbc:sqlite:C:\\Users\\curso\\git\\java-2021-04\\BasesDeDatos\\tienda.db",
 				"type": "dev",
-				"auth-model": "native"
-			}
-		},
-		"sqlite_jdbc-179220b1a3f-351d08bfdedc4786": {
-			"provider": "generic",
-			"driver": "sqlite_jdbc",
-			"name": "tiendamusica.db",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"database": "C:\\Users\\curso\\git\\java-2021-04\\BasesDeDatos\\tiendamusica.db",
-				"url": "jdbc:sqlite:C:\\Users\\curso\\git\\java-2021-04\\BasesDeDatos\\tiendamusica.db",
-				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}
 			}
