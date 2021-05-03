@@ -16,4 +16,5 @@ CREATE INDEX usuarios_nombre_IDX ON usuarios (nombre);
 
 INSERT INTO usuarios (email, password, nombre, apellidos) VALUES 
 ('javier@email.com', 'javier', 'Javier', 'Lete'),
-('pepe@email.com', 'Pepe', 'Pepe', 'Pérez');
+('pepe@email.com', 'pepe', 'Pepe', 'Pérez'),
+('juanes@email.com', 'juanes', 'Juanes', 'Teban');
