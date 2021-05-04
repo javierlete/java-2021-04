@@ -9,6 +9,9 @@ public class PresentacionConsola {
 		for(Usuario usuario: DaoUsuario.obtenerTodos()) {
 			System.out.println(usuario);
 		}
+		
+		Usuario u = DaoUsuario.obtenerPorId(1);
+		System.out.println(u);
 	}
 
 }
