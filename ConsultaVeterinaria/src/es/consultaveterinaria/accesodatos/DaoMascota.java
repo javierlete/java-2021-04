@@ -41,6 +41,66 @@ public class DaoMascota {
 			throw new AccesoDatosException("No se han podido obtener todos los registros", e);
 		}
 	}
+	
+	public static Mascota obtenerPorId(Integer id) {
+		try (Connection con = obtenerConexion();
+				PreparedStatement ps = con.prepareStatement(SQL_SELECT_ID);
+				) {
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			Mascota mascota = null;
+
+			if (rs.next()) {
+				mascota = new Mascota(rs.getInt("id"), rs.getString("nombre"),
+						rs.getDate("fecha_nacimiento").toLocalDate());
+			}
+
+			return mascota;
+		} catch (SQLException e) {
+			throw new AccesoDatosException("No se han podido obtener el registro con id " + id, e);
+		}
+	}
+	
+	public static void insertar(Mascota mascota) {
+		try (Connection con = obtenerConexion();
+				PreparedStatement ps = con.prepareStatement(SQL_INSERT);
+				) {
+			ps.setString(1, mascota.getNombre());
+			ps.setObject(2, mascota.getFechaNacimiento());
+
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			throw new AccesoDatosException("No se han podido insertar el registro " + mascota, e);
+		}
+	}
+	
+	public static void modificar(Mascota mascota) {
+		try (Connection con = obtenerConexion();
+				PreparedStatement ps = con.prepareStatement(SQL_UPDATE);
+				) {
+			ps.setString(1, mascota.getNombre());
+			ps.setObject(2, mascota.getFechaNacimiento());
+			ps.setInt(3, mascota.getId());
+
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			throw new AccesoDatosException("No se han podido modificar el registro " + mascota, e);
+		}
+	}
+	
+	public static void borrar(Integer id) {
+		try (Connection con = obtenerConexion();
+				PreparedStatement ps = con.prepareStatement(SQL_DELETE);
+				) {
+			ps.setInt(1, id);
+
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			throw new AccesoDatosException("No se han podido borrar el registro id " + id, e);
+		}
+	}
 
 	private static Connection obtenerConexion() {
 		try {
