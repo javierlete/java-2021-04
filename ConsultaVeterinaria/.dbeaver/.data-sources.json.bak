@@ -11,7 +11,8 @@
 				"database": "C:\\Users\\curso\\git\\java-2021-04\\ConsultaVeterinaria\\consultaveterinaria.sqlite3",
 				"url": "jdbc:sqlite:C:\\Users\\curso\\git\\java-2021-04\\ConsultaVeterinaria\\consultaveterinaria.sqlite3",
 				"type": "dev",
-				"auth-model": "native"
+				"auth-model": "native",
+				"handlers": {}
 			}
 		}
 	},
