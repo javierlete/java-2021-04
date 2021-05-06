@@ -1,15 +1,16 @@
 package com.ipartek.formacion.swing;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JTextField;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class Calculadora {
 
@@ -42,6 +43,7 @@ public class Calculadora {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
@@ -54,6 +56,11 @@ public class Calculadora {
 		tfOp1.setColumns(10);
 
 		JButton btnIgual = new JButton("=");
+		
+		JComboBox cbOp = new JComboBox();
+		cbOp.setModel(new DefaultComboBoxModel(new String[] {"+", "-", "x", "/"}));
+		cbOp.setBounds(106, 10, 89, 22);
+		frame.getContentPane().add(cbOp);
 
 		JLabel lblResultado = new JLabel("");
 		lblResultado.setBounds(205, 14, 46, 14);
@@ -61,6 +68,10 @@ public class Calculadora {
 
 		btnIgual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String op = (String) cbOp.getSelectedItem();
+				
+				JOptionPane.showMessageDialog(frame, op);
+				
 				String texto = tfOp1.getText();
 
 				int num = Integer.parseInt(texto);
@@ -77,9 +88,8 @@ public class Calculadora {
 				// lblResultado.setText(String.valueOf(Integer.parseInt(tfOp1.getText()) * 2));
 			}
 		});
-		btnIgual.setBounds(106, 10, 89, 23);
+		btnIgual.setBounds(204, 10, 89, 23);
 		frame.getContentPane().add(btnIgual);
 
 	}
-
 }
