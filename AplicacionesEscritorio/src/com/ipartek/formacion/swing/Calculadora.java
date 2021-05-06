@@ -9,13 +9,15 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Calculadora {
 
 	private JFrame frame;
 	private JTextField tfOp1;
+	private JTextField tfOp2;
 
 	/**
 	 * Launch the application.
@@ -35,8 +37,14 @@ public class Calculadora {
 
 	/**
 	 * Create the application.
+	 * @throws UnsupportedLookAndFeelException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Calculadora() {
+	public Calculadora() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		
 		initialize();
 	}
 
@@ -57,20 +65,25 @@ public class Calculadora {
 
 		JButton btnIgual = new JButton("=");
 		
+		tfOp2 = new JTextField();
+		tfOp2.setColumns(10);
+		tfOp2.setBounds(154, 11, 86, 20);
+		frame.getContentPane().add(tfOp2);
+		
 		JComboBox cbOp = new JComboBox();
 		cbOp.setModel(new DefaultComboBoxModel(new String[] {"+", "-", "x", "/"}));
-		cbOp.setBounds(106, 10, 89, 22);
+		cbOp.setBounds(106, 10, 34, 22);
 		frame.getContentPane().add(cbOp);
 
 		JLabel lblResultado = new JLabel("");
-		lblResultado.setBounds(205, 14, 46, 14);
+		lblResultado.setBounds(301, 11, 123, 20);
 		frame.getContentPane().add(lblResultado);
 
 		btnIgual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String op = (String) cbOp.getSelectedItem();
 				
-				JOptionPane.showMessageDialog(frame, op);
+				System.out.println(op);
 				
 				String texto = tfOp1.getText();
 
@@ -81,14 +94,10 @@ public class Calculadora {
 
 				lblResultado.setText(strResultado);
 				
-				JOptionPane.showMessageDialog(frame, strResultado);
-				System.out.println(JOptionPane.showConfirmDialog(frame, "¿Estás seguro?"));
-				System.out.println(JOptionPane.showInputDialog(frame, "Introduce tu nombre:"));
-
 				// lblResultado.setText(String.valueOf(Integer.parseInt(tfOp1.getText()) * 2));
 			}
 		});
-		btnIgual.setBounds(204, 10, 89, 23);
+		btnIgual.setBounds(250, 10, 41, 23);
 		frame.getContentPane().add(btnIgual);
 
 	}
