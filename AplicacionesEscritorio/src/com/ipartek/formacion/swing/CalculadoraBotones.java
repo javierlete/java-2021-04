@@ -12,13 +12,19 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class CalculadoraBotones {
 
+	private static final Font TIPO_LETRA = new Font("Tahoma", Font.PLAIN, 18);
 	private JFrame frame;
 	private JTextField tfPantalla;
 	private JPanel pNumeros;
 	private JButton btnSumar, btnRestar, btnMultiplicar, btnDividir;
+
+	private double op1, op2;
+	private String op;
 
 	/**
 	 * Launch the application.
@@ -50,26 +56,37 @@ public class CalculadoraBotones {
 
 		initialize();
 
-		String[] etiquetas = { "7","8", "9", "4", "5", "6", "1", "2", "3", "CE", "0", "." };
-		
+		String[] etiquetas = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "CE", "0", "." };
+
 		JButton boton;
 
-		for (String etiqueta: etiquetas) {
+		for (String etiqueta : etiquetas) {
 			boton = new JButton(etiqueta);
+			boton.setFont(TIPO_LETRA);
 
 			boton.addActionListener((e) -> {
 				JButton b = (JButton) e.getSource();
-				System.out.println(b.getText());
+				String texto = b.getText();
+
+				if ("CE".equals(texto)) {
+					tfPantalla.setText("");
+				} else {
+					tfPantalla.setText(tfPantalla.getText() + texto);
+				}
 			});
 
 			pNumeros.add(boton);
 		}
-		
+
 		ActionListener operaciones = (e) -> {
 			JButton b = (JButton) e.getSource();
-			System.out.println(b.getText());
+			
+			op = b.getText();
+			op1 = Double.parseDouble(tfPantalla.getText());
+			
+			tfPantalla.setText("");
 		};
-		
+
 		btnSumar.addActionListener(operaciones);
 		btnRestar.addActionListener(operaciones);
 		btnMultiplicar.addActionListener(operaciones);
@@ -85,6 +102,9 @@ public class CalculadoraBotones {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		tfPantalla = new JTextField();
+		tfPantalla.setFont(TIPO_LETRA);
+		tfPantalla.setHorizontalAlignment(SwingConstants.RIGHT);
+		tfPantalla.setEnabled(false);
 		frame.getContentPane().add(tfPantalla, BorderLayout.NORTH);
 		tfPantalla.setColumns(10);
 
@@ -93,21 +113,46 @@ public class CalculadoraBotones {
 		pOperaciones.setLayout(new GridLayout(0, 1, 0, 0));
 
 		btnSumar = new JButton("+");
+		btnSumar.setFont(TIPO_LETRA);
 		pOperaciones.add(btnSumar);
 
 		btnRestar = new JButton("-");
+		btnRestar.setFont(TIPO_LETRA);
 		pOperaciones.add(btnRestar);
 
 		btnMultiplicar = new JButton("x");
+		btnMultiplicar.setFont(TIPO_LETRA);
 		pOperaciones.add(btnMultiplicar);
 
 		btnDividir = new JButton("/");
+		btnDividir.setFont(TIPO_LETRA);
 		pOperaciones.add(btnDividir);
 
 		JButton btnIgual = new JButton("=");
 		btnIgual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				op2 = Double.parseDouble(tfPantalla.getText());
 				
+				double resultado = 0;
+				
+				switch (op) {
+				case "+":
+					resultado = op1 + op2;
+					break;
+				case "-":
+					resultado = op1 - op2;
+					break;
+				case "x":
+					resultado = op1 * op2;
+					break;
+				case "/":
+					resultado = op1 / op2;
+					break;
+				}
+
+				String strResultado = String.valueOf(resultado);
+				
+				tfPantalla.setText(strResultado);
 			}
 		});
 		pOperaciones.add(btnIgual);
