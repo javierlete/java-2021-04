@@ -14,59 +14,83 @@ import javax.servlet.http.HttpServletResponse;
 public class AdivinaNumeroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String strNumero = request.getParameter("numero");
-		
-		if(strNumero == null) {
+
+		if (strNumero == null) {
 			response.sendRedirect("adivinanumero.jsp");
 			return;
 		}
-		
-		Cookie[] cookies = request.getCookies();
-		
-		String cookieAdivinar = null;
-		
-		if(cookies != null) {
-			for(Cookie cookie: cookies) {
-				if(cookie.getName().equals("adivinar")) {
-					cookieAdivinar = cookie.getValue();
-					break;
-				}
-			}
-		}
-		
-		int aleatorio = 0; 
-		
-		if(cookieAdivinar == null) {
-			aleatorio = new Random().nextInt(100) + 1;
-			Cookie cookie = new Cookie("adivinar", String.valueOf(aleatorio));
-			cookie.setMaxAge(60*60*24*7);
-			response.addCookie(cookie);
+
+		String cookieAdivinar = buscarAleatorio(request);
+
+		int aleatorio = 0;
+
+		if (cookieAdivinar == null) {
+			aleatorio = crearAleatorio(response);
 		} else {
 			aleatorio = Integer.parseInt(cookieAdivinar);
 		}
-		
+
 		String strRespuesta;
+
+		int numero;
 		
-		int numero = Integer.parseInt(strNumero);
-		
-		if(numero == aleatorio) {
-			strRespuesta = "Has acertado";
-			
-			Cookie cookie = new Cookie("adivinar", "");
-			cookie.setMaxAge(0);
-			response.addCookie(cookie);
-		} else if(aleatorio > numero) {
-			strRespuesta = "El número es MAYOR";
-		} else {
-			strRespuesta = "El número es menor";
+		try {
+			numero = Integer.parseInt(strNumero);
+
+			if (numero == aleatorio) {
+				strRespuesta = "Has acertado";
+
+				resetearAleatorio(response);
+			} else if (aleatorio > numero) {
+				strRespuesta = "El número es MAYOR";
+			} else {
+				strRespuesta = "El número es menor";
+			}
+		} catch (NumberFormatException e) {
+			strRespuesta = "Intenta con un número la próxima vez";
 		}
 		
 		request.setAttribute("respuesta", strRespuesta);
 		request.getRequestDispatcher("/adivinanumero.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private String buscarAleatorio(HttpServletRequest request) {
+		Cookie[] cookies = request.getCookies();
+
+		if (cookies == null) {
+			return null;
+		}
+
+		for (Cookie cookie : cookies) {
+			if (cookie.getName().equals("adivinar")) {
+				return cookie.getValue();
+			}
+		}
+
+		return null;
+	}
+
+	private int crearAleatorio(HttpServletResponse response) {
+		int aleatorio = new Random().nextInt(100) + 1;
+
+		Cookie cookie = new Cookie("adivinar", String.valueOf(aleatorio));
+		cookie.setMaxAge(60 * 60 * 24 * 7);
+		response.addCookie(cookie);
+
+		return aleatorio;
+	}
+
+	private void resetearAleatorio(HttpServletResponse response) {
+		Cookie cookie = new Cookie("adivinar", "");
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
