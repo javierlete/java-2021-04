@@ -12,7 +12,7 @@ public class RutaAbsolutaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(getServletContext().getRealPath("/WEB-INF/midb.sqlite3"));
+		System.out.println("jdbc:sqlite:" + getServletContext().getRealPath("/WEB-INF/midb.sqlite3"));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
