@@ -10,6 +10,7 @@
 			<th>Id</th>
 			<th>Nombre</th>
 			<th>Precio</th>
+			<th>Opciones</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -18,9 +19,23 @@
 				<th>${producto.id}</th>
 				<td>${producto.nombre}</td>
 				<td>${producto.precio}</td>
+				<td>
+					<a href="editar?id=${producto.id}">Modificar</a>
+					<a href="borrar?id=${producto.id}">Borrar</a>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>
+	<tfoot>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+				<a href="editar">Añadir</a>
+			</td>
+		</tr>
+	</tfoot>
 </table>
 
 <%@ include file="/includes/pie.jspf"%>
