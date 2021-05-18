@@ -1,6 +1,7 @@
 package com.ipartek.formacion.webbasica.admin;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.TreeMap;
 
 import javax.servlet.ServletContext;
@@ -32,7 +33,26 @@ public class EditarServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		
+		ServletContext application = getServletContext();
+		
+		String id = request.getParameter("id");
+		String nombre = request.getParameter("nombre");
+		String precio = request.getParameter("precio");
+		
+		Producto producto = new Producto(
+				Integer.parseInt(id),
+				nombre,
+				new BigDecimal(precio)
+		);
+		
+		@SuppressWarnings("unchecked")
+		TreeMap<Integer, Producto> productos = (TreeMap<Integer, Producto>) application.getAttribute("baseDeDatos");
+		
+		productos.put(producto.getId(), producto);
+		
+		request.getRequestDispatcher("/admin/index").forward(request, response);
 	}
 
 }
