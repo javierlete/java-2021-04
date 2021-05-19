@@ -1,0 +1,30 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-1798406e54f-18e5ee5e0f8150e0": {
+			"provider": "generic",
+			"driver": "sqlite_jdbc",
+			"name": "tiendaonline.sqlite3",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\curso\\git\\java-2021-04\\tiendaonline\\tiendaonline.sqlite3",
+				"url": "jdbc:sqlite:C:\\Users\\curso\\git\\java-2021-04\\tiendaonline\\tiendaonline.sqlite3",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
