@@ -2,6 +2,7 @@ package com.ipartek.formacion.tiendaonline.daos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -37,5 +38,24 @@ public class DaoUsuario {
 			e.printStackTrace();
 		}
 		return usuarios;
+	}
+	
+	public Usuario selectByEmail(String email) {
+		Usuario usuario = null;
+
+		try (PreparedStatement ps = con.prepareStatement("SELECT * FROM usuario WHERE email = ?")) {
+			ps.setString(1, email);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				usuario = new Usuario(rs.getInt("id"), rs.getString("email"), rs.getString("password"),
+						rs.getString("nombre"), rs.getString("rol"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return usuario;
 	}
 }
