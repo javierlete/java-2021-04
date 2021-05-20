@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ipartek.formacion.tiendaonline.daos.DaoUsuario;
+import com.eskura21.libraries.beginnersjdbc.Dao;
 import com.ipartek.formacion.tiendaonline.modelos.Usuario;
 
 @WebServlet("/login")
@@ -24,9 +24,9 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		String pathSqlite = getServletContext().getRealPath("/WEB-INF/tiendaonline.sqlite3");
-		DaoUsuario dao = new DaoUsuario("org.sqlite.JDBC", "jdbc:sqlite:" + pathSqlite, "", "");
 		
-		Usuario usuario = dao.selectByEmail(email);
+		Dao<Usuario> dao = new Dao<>(Usuario.class, pathSqlite);
+		Usuario usuario = dao.selectOneByField("email", email);
 		
 		if(usuario != null && usuario.getPassword().equals(password)) {
 			request.getSession().setAttribute("usuario", usuario);

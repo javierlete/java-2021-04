@@ -13,6 +13,9 @@ public class Usuario {
 		setNombre(nombre);
 		setRol(rol);
 	}
+	
+	public Usuario() {}
+	
 	public Integer getId() {
 		return id;
 	}
