@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if(usuario != null && usuario.getPassword().equals(password)) {
 			request.getSession().setAttribute("usuario", usuario);
-			response.sendRedirect("principal.jsp");
+			response.sendRedirect(request.getContextPath() + "/principal.jsp");
 		} else {
 			request.setAttribute("error", "El usuario o la contraseña no son correctos");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
