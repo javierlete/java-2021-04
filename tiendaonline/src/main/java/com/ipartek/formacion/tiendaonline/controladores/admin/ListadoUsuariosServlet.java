@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.eskura21.libraries.beginnersjdbc.Dao;
+import com.ipartek.formacion.tiendaonline.controladores.config.Config;
 import com.ipartek.formacion.tiendaonline.modelos.Usuario;
 
 @WebServlet("/admin/usuarios/listado")
@@ -18,12 +18,15 @@ public class ListadoUsuariosServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String pathSqlite = getServletContext().getRealPath("/WEB-INF/tiendaonline.sqlite3");
-		
-		Dao<Usuario> dao = new Dao<>(Usuario.class, pathSqlite);		
-		List<Usuario> usuarios = dao.select();
+		// Pedimos el DAO de Usuario que hemos guardado a nivel global desde el InicioServidorListener
+		// y obtenemos todos los usuarios de la tabla usuario
+		List<Usuario> usuarios = Config.daoUsuario.select();
 
+		// Creamos una variable para usar con el expression language llamada "usuarios" que
+		// contiene la colección de usuarios recibida por el DAO
 		request.setAttribute("usuarios", usuarios);
+		// Reenviamos la petición en la que nos encontramos a listado.jsp (incluyendo la variable,
+		// anterior
 		request.getRequestDispatcher("/admin/usuarios/listado.jsp").forward(request, response);
 	}
 
