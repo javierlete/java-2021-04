@@ -1,13 +1,6 @@
 package com.ipartek.formacion.tiendaonline.controladores.admin;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
