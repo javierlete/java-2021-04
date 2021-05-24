@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Listado de productos</title>
-</head>
-<body>
-
+    pageEncoding="UTF-8"%>
+<%@ include file="/includes/cabecera.jsp" %>
 	<h1>Listado de productos</h1>
 
 	<table>
@@ -27,8 +19,8 @@
 					<th>${producto.id}</th>
 					<td>${producto.nombre}</td>
 					<td>${producto.precio}</td>
-					<td><a href="editar?id=${producto.id}">Editar</a> <a
-						href="borrar?id=${producto.id}">Borrar</a></td>
+					<td><a href="admin/productos/editar?id=${producto.id}">Editar</a> <a
+						href="admin/productos/borrar?id=${producto.id}">Borrar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -38,11 +30,10 @@
 				<td></td>
 				<td></td>
 				<td>
-					<a href="agregar">Añadir</a>
+					<a href="admin/productos/agregar">Añadir</a>
 				</td>
 			</tr>
 		</tfoot>
 	</table>
 
-</body>
-</html>
+<%@ include file="/includes/pie.jsp" %>
