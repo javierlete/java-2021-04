@@ -30,7 +30,7 @@
 				<td></td>
 				<td></td>
 				<td>
-					<a href="admin/productos/agregar">Añadir</a>
+					<a href="admin/productos/editar">Añadir</a>
 				</td>
 			</tr>
 		</tfoot>
