@@ -1,15 +1,15 @@
 {
 	"folders": {},
 	"connections": {
-		"sqlite_jdbc-1798406e54f-18e5ee5e0f8150e0": {
+		"sqlite_jdbc-179841131ac-10b4a52ec4ae2f46": {
 			"provider": "generic",
 			"driver": "sqlite_jdbc",
 			"name": "tiendaonline.sqlite3",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
-				"database": "C:\\Users\\curso\\git\\java-2021-04\\tiendaonline\\tiendaonline.sqlite3",
-				"url": "jdbc:sqlite:C:\\Users\\curso\\git\\java-2021-04\\tiendaonline\\tiendaonline.sqlite3",
+				"database": "C:\\Users\\curso\\git\\java-2021-04\\tiendaonline\\src\\main\\webapp\\WEB-INF\\tiendaonline.sqlite3",
+				"url": "jdbc:sqlite:C:\\Users\\curso\\git\\java-2021-04\\tiendaonline\\src\\main\\webapp\\WEB-INF\\tiendaonline.sqlite3",
 				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}

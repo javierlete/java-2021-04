@@ -11,8 +11,7 @@
 				"database": "C:\\Users\\curso\\git\\java-2021-04\\tiendaonline\\src\\main\\webapp\\WEB-INF\\tiendaonline.sqlite3",
 				"url": "jdbc:sqlite:C:\\Users\\curso\\git\\java-2021-04\\tiendaonline\\src\\main\\webapp\\WEB-INF\\tiendaonline.sqlite3",
 				"type": "dev",
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		}
 	},
