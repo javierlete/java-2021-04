@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("usuario", usuario);
 			// Pedimos al navegador que nos lleve a la página principal.jsp a partir del raíz de
 			// la aplicación (request.getContextPath())
-			response.sendRedirect(request.getContextPath() + "/principal.jsp");
+			response.sendRedirect(request.getContextPath() + "/principal");
 		} else {
 			// Si no es correcto
 			// Guardamos un atributo de request con el error

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/includes/cabecera.jsp" %>
-	<h1>Listado de productos</h1>
-
-	<table>
+	pageEncoding="UTF-8"%>
+<%@ include file="/includes/cabecera.jsp"%>
+<h1>Listado de productos</h1>
+<div class="table-responsive">
+	<table class="table table-striped table-hover table-bordered table-sm">
 		<caption>Productos</caption>
-		<thead>
+		<thead class="table-dark">
 			<tr>
 				<th>Id</th>
 				<th>Nombre</th>
@@ -19,8 +19,8 @@
 					<th>${producto.id}</th>
 					<td>${producto.nombre}</td>
 					<td>${producto.precio}</td>
-					<td><a href="admin/productos/editar?id=${producto.id}">Editar</a> <a
-						href="admin/productos/borrar?id=${producto.id}">Borrar</a></td>
+					<td><a class="btn btn-primary" href="admin/productos/editar?id=${producto.id}">Editar</a>
+						<a class="btn btn-danger" href="admin/productos/borrar?id=${producto.id}">Borrar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -29,11 +29,9 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td>
-					<a href="admin/productos/editar">Añadir</a>
-				</td>
+				<td><a class="btn btn-primary" href="admin/productos/editar">Añadir</a></td>
 			</tr>
 		</tfoot>
 	</table>
-
-<%@ include file="/includes/pie.jsp" %>
+</div>
+<%@ include file="/includes/pie.jsp"%>
