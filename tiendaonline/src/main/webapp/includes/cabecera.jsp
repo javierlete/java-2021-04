@@ -29,12 +29,26 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="principal.jsp">Principal</a></li>
-					<li class="nav-item"><a class="nav-link" href="admin/productos/listado">Productos</a></li>
-					<li class="nav-item"><a class="nav-link" href="admin/usuarios/listado">Usuarios</a></li>
+						aria-current="page" href="principal">Principal</a></li>
+					<c:if test="${sessionScope.usuario.rol == 'ADMIN' }">
+						<li class="nav-item"><a class="nav-link"
+							href="admin/productos/listado">Productos</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="admin/usuarios/listado">Usuarios</a></li>
+					</c:if>
 				</ul>
+				<c:if test="${sessionScope.usuario != null}">
+					<span class="navbar-text">${sessionScope.usuario.nombre}</span>
+				</c:if>
 				<ul class="navbar-nav mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+					<c:choose>
+						<c:when test="${sessionScope.usuario != null}">
+							<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</div>
