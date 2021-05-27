@@ -40,6 +40,8 @@ public class LoginServlet extends HttpServlet {
 			// Si no es correcto
 			// Guardamos un atributo de request con el error
 			request.setAttribute("error", "El usuario o la contraseña no son correctos");
+			
+			request.setAttribute("usuario", new Usuario(null, email, null, null, null));
 			// Reenviamos la petición a la pantalla de login.jsp
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
