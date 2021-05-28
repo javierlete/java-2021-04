@@ -20,7 +20,7 @@
 					<td>${producto.nombre}</td>
 					<td>${producto.precio}</td>
 					<td><a class="btn btn-primary" href="admin/productos/editar?id=${producto.id}">Editar</a>
-						<a class="btn btn-danger" href="admin/productos/borrar?id=${producto.id}">Borrar</a></td>
+						<a class="btn btn-danger" onclick="return confirm('¿Estás seguro?')" href="admin/productos/borrar?id=${producto.id}">Borrar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
