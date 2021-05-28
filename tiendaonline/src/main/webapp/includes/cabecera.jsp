@@ -19,6 +19,9 @@
 <!-- DataTables adaptado a Bootstrap -->
 <link href="css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">

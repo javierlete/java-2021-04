@@ -4,6 +4,30 @@
 
 <h1>Bienvenido ${usuario.nombre}, tienes el rol ${usuario.rol}</h1>
 
+<canvas id="myChart" class="row"></canvas>
+<script>
+	var ctx = document.getElementById('myChart');
+	var myChart = new Chart(ctx, {
+		type : 'bar',
+		data : {
+			labels : [ 
+				<c:forEach items="${productos}" var="producto">
+					'${producto.nombre}',
+				</c:forEach>
+				],
+			datasets : [ {
+				label : 'Precios',
+				data : [ 
+					<c:forEach items="${productos}" var="producto">
+					'${producto.precio}',
+				</c:forEach>
+					],
+				
+			} ]
+		}
+	});
+</script>
+
 <div
 	class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
 
