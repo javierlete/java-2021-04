@@ -9,18 +9,15 @@
 <base href="${pageContext.request.contextPath}/" />
 
 <title>Tienda Online</title>
+
 <!-- FontAwesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+<link href="css/all.min.css" rel="stylesheet" />
 
 <!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-	crossorigin="anonymous">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 	
 <!-- DataTables adaptado a Bootstrap -->
-<link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<link href="css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 
 </head>
 <body>
