@@ -1,6 +1,6 @@
 </main>
 <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     
     <!-- jQuery (necesario para DataTables) -->
     <script src="js/jquery-3.6.0.min.js"></script>
