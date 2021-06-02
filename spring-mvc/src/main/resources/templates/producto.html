@@ -10,15 +10,19 @@
 		method="post">
 		<p>
 			Id: <input type="text" th:field="*{id}" />
+			<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
 		</p>
 		<p>
 			Nombre: <input type="text" th:field="*{nombre}" />
+			<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
 		</p>
 		<p>
 			Fecha caducidad: <input type="date" th:field="*{fechaCaducidad}" />
+			<span th:if="${#fields.hasErrors('fechaCaducidad')}" th:errors="*{fechaCaducidad}"></span>
 		</p>
 		<p>
 			Precio: <input type="number" step=".01" th:field="*{precio}" />
+			<span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></span>
 		</p>
 		<p>
 			<input type="submit" value="Aceptar" />
