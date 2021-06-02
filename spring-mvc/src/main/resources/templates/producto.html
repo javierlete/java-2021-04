@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Form</h1>
+	<form action="#" th:action="@{/productoagregar}" th:object="${producto}"
+		method="post">
+		<p>
+			Id: <input type="text" th:field="*{id}" />
+		</p>
+		<p>
+			Nombre: <input type="text" th:field="*{nombre}" />
+		</p>
+		<p>
+			Fecha caducidad: <input type="date" th:field="*{fechaCaducidad}" />
+		</p>
+		<p>
+			Precio: <input type="number" step=".01" th:field="*{precio}" />
+		</p>
+		<p>
+			<input type="submit" value="Aceptar" />
+		</p>
+	</form>
+</body>
+</html>

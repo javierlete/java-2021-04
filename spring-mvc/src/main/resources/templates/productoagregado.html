@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Result</h1>
+    <p th:text="'id: ' + ${producto.id}">1</p>
+    <p th:text="'nombre: ' + ${producto.nombre}">Monitor</p>
+    <p th:text="'fechaCaducidad: ' + ${producto.fechaCaducidad}">2022-03-02</p>
+    <p th:text="'precio: ' + ${producto.precio}">123,34</p>
+    <a href="/productoagregar">Dar de alta otro producto</a>
+</body>
+</html>
