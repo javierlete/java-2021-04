@@ -1,4 +1,4 @@
-package com.ipartek.formacion.clientesspring;
+package com.ipartek.formacion.clientesspring.repositorios;
 
 import org.springframework.data.repository.CrudRepository;
 
