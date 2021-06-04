@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cliente</title>
+</head>
+<body>
+<form action="#" th:action="@{/cliente}" method="post" th:object="${cliente}">
+		<p>
+			Id: <input type="text" readonly name="id" th:value="${cliente.id}" />
+		</p>
+		<p>
+			Nombre: <input type="text" th:field="*{nombre}" />
+			<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+		</p>
+		<p>
+			Apellido: <input type="text" th:field="*{apellido}" />
+			<span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></span>
+		</p>
+		<p>
+			Teléfono: <input type="text" th:field="*{telefono}" />
+			<span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></span>
+		</p>
+		<p>
+			Email: <input type="email" th:field="*{email}" />
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+		</p>
+		<p>
+			Saldo: <input type="number" step=".01" th:field="*{saldo}" />
+			<span th:if="${#fields.hasErrors('saldo')}" th:errors="*{saldo}"></span>
+		</p>
+		<p>
+			<input type="submit" value="Aceptar" />
+		</p>
+	</form>
+</body>
+</html>

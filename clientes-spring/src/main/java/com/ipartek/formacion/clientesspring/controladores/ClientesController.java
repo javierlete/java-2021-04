@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ipartek.formacion.clientesspring.entidades.Cliente;
 import com.ipartek.formacion.clientesspring.servicios.ClienteService;
@@ -21,6 +22,12 @@ public class ClientesController {
 		return "listado";
 	}
 	
+
+	@GetMapping("/cliente")
+	public String mostrarVacio(Cliente cliente) {
+		return "cliente";
+	}
+	
 	@GetMapping("/cliente/{id}")
 	public String mostrar(@PathVariable Long id, Model modelo) {
 		modelo.addAttribute("cliente", servicio.obtenerPorId(id));
@@ -34,8 +41,13 @@ public class ClientesController {
 	}
 	
 	@PostMapping("/cliente")
-	public String editar(Cliente cliente) {
-		servicio.editar(cliente);
+	public String editar(Cliente cliente, @RequestParam String id) {
+		if(id.trim().length() != 0) {
+			cliente.setId(Long.parseLong(id));
+			servicio.editar(cliente);
+		} else {
+			servicio.agregar(cliente);
+		}
 		return "redirect:/";
 	}
 }
